@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/prev_match"
+        android:icon="@drawable/ic_prevmatch"
+        android:title="@string/title_prev_match" />
+
+    <item
+        android:id="@+id/next_match"
+        android:icon="@drawable/ic_nextmatch"
+        android:title="@string/title_next_match" />
+
+    <item
+        android:id="@+id/favorite"
+        android:icon="@drawable/ic_favourite"
+        android:title="@string/title_favourite"/>
+
+</menu>
