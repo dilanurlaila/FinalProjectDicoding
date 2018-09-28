@@ -1,4 +1,4 @@
-package id.co.metrasat.footballApp.fragment
+package id.co.metrasat.footballApp.fragment.FragmentMatch
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

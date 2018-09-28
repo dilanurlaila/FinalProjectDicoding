@@ -1,11 +1,10 @@
 package id.co.metrasat.footballApp.adapter
 
-import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import id.co.metrasat.footballApp.fragment.FragmentEventNext
-import id.co.metrasat.footballApp.fragment.FragmentEventPast
+import id.co.metrasat.footballApp.fragment.FragmentMatch.FragmentEventNext
+import id.co.metrasat.footballApp.fragment.FragmentMatch.FragmentEventPast
 
 
 class PageAdapter (fm : FragmentManager?, private val noOfTabs:Int, private val idLeague:String?) : FragmentStatePagerAdapter(fm) {

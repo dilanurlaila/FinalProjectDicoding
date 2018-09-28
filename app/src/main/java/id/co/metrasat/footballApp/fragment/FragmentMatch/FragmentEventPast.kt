@@ -1,4 +1,4 @@
-package id.co.metrasat.footballApp.fragment
+package id.co.metrasat.footballApp.fragment.FragmentMatch
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -14,12 +14,10 @@ import id.co.metrasat.footballApp.R
 import id.co.metrasat.footballApp.adapter.EventsAdapter
 import id.co.metrasat.footballApp.helper.ApiRepository
 import id.co.metrasat.footballApp.helper.MainView
-import id.co.metrasat.footballApp.helper.TheSportDBApi.getEventPast
 import id.co.metrasat.footballApp.helper.invisible
 import id.co.metrasat.footballApp.helper.visible
 import id.co.metrasat.footballApp.model.EventsItem
 import id.co.metrasat.footballApp.presenter.MainPresenter
-import org.jetbrains.anko.find
 import org.jetbrains.anko.support.v4.onRefresh
 
 

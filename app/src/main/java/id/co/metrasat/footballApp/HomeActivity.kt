@@ -5,19 +5,22 @@ import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Adapter
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TableLayout
 import com.google.gson.Gson
 import id.co.metrasat.footballApp.adapter.FavoritePageAdapter
 import id.co.metrasat.footballApp.adapter.PageAdapter
+import id.co.metrasat.footballApp.fragment.FragmentTeams
 import id.co.metrasat.footballApp.helper.ApiRepository
 import id.co.metrasat.footballApp.helper.LeagueView
 import id.co.metrasat.footballApp.helper.MainView
@@ -26,10 +29,8 @@ import id.co.metrasat.footballApp.presenter.LeaguePresenter
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.content_home.*
-import org.jetbrains.anko.sp
-import org.jetbrains.anko.toast
 
-class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, LeagueView {
+class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, LeagueView{
 
     private lateinit var pageAdapter: PageAdapter
     private lateinit var presenter : LeaguePresenter
@@ -46,8 +47,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
-        tabLayoutMainActivity.addTab(tabLayoutMainActivity.newTab().setText("Last Event"))
-        tabLayoutMainActivity.addTab(tabLayoutMainActivity.newTab().setText("Next Event"))
+
         val gson = Gson()
         val apiRepository = ApiRepository()
         presenter = LeaguePresenter(this, apiRepository, gson)
@@ -61,11 +61,11 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     @SuppressLint("PrivateResource")
     private fun addFrgment(fragment: Fragment) {
         supportFragmentManager
-                .beginTransaction()
+                .beginTransaction().replace(R.id.viewContainer, fragment, fragment.javaClass.simpleName)
                 .setCustomAnimations(R.anim.design_bottom_sheet_slide_in, R.anim.design_bottom_sheet_slide_out)
-                .replace(R.id.viewContainer, fragment, fragment.javaClass.simpleName)
                 .commit()
     }
+
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -94,9 +94,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 tabLayoutMainActivity.getTabAt(0)?.setText("Last Event")
                 tabLayoutMainActivity.getTabAt(1)?.setText("Next Event")
                 pageAdapter = PageAdapter(supportFragmentManager, tabLayoutMainActivity.tabCount, MainView.LEAGUE_ID)
-                println("=====================" + MainView.LEAGUE_ID)
                 viewContainer.adapter = pageAdapter
                 viewContainer.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayoutMainActivity))
+                supportActionBar?.title = "Match"
                 onBackPressed()
             }
             R.id.nav_favorite -> {
@@ -105,10 +105,13 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 favoriteAdapter = FavoritePageAdapter(supportFragmentManager, tabLayoutMainActivity.tabCount)
                 viewContainer.adapter = favoriteAdapter
                 viewContainer.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayoutMainActivity))
+                supportActionBar?.title = "Favorite"
                 onBackPressed()
             }
             R.id.nav_teams -> {
-                toast("test")
+                supportActionBar?.title = "Teams"
+                onBackPressed()
+                return true
 
             }
         }
@@ -137,11 +140,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(p0: AdapterView<*>?) {
-
             }
-
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                MainView.LEAGUE_ID = data[spinner.selectedItemPosition].idLeague
+               MainView.LEAGUE_ID = data[spinner.selectedItemPosition].idLeague
                 pageAdapter = PageAdapter(supportFragmentManager, tabLayoutMainActivity.tabCount, MainView.LEAGUE_ID)
                 viewContainer.adapter = pageAdapter
                 viewContainer.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayoutMainActivity))
@@ -151,3 +152,4 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
 }
+

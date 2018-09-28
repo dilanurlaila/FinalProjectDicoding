@@ -15,8 +15,7 @@ import org.jetbrains.anko.startActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class
-EventsAdapter(private val context: Context?, private val events: List<EventsItem>)
+class EventsAdapter(private val context: Context?, private val events: List<EventsItem>)
     : RecyclerView.Adapter<EventsAdapter.EventHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =

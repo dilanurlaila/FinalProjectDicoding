@@ -7,8 +7,8 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.widget.FrameLayout
-import id.co.metrasat.footballApp.fragment.FragmentEventNext
-import id.co.metrasat.footballApp.fragment.FragmentEventPast
+import id.co.metrasat.footballApp.fragment.FragmentMatch.FragmentEventNext
+import id.co.metrasat.footballApp.fragment.FragmentMatch.FragmentEventPast
 import kotlinx.android.synthetic.main.activity_main2.*
 
 class Main2Activity : AppCompatActivity() {
@@ -27,6 +27,8 @@ class Main2Activity : AppCompatActivity() {
         val fragment = FragmentEventPast.newInstance()
         addFrgment(fragment)
     }
+
+
 
     private val mOnNavigationItemSelectedListener = object : BottomNavigationView.OnNavigationItemSelectedListener {
         override fun onNavigationItemSelected(item: MenuItem): Boolean {
