@@ -5,9 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ProgressBar
 import com.google.gson.Gson
 import id.co.metrasat.footballApp.R
@@ -34,10 +32,10 @@ class FragmentTeams : Fragment() , TeamView{
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val rootView =  inflater.inflate(R.layout.fragment_teams, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_teams, container, false)
         progressBar = rootView.findViewById(R.id.pgBarTeam)
         swipeRefresh = rootView.findViewById(R.id.swipeTeams)
-        recyclerView =rootView.findViewById(R.id.rvTeam)
+        recyclerView = rootView.findViewById(R.id.rvTeam)
 
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 1)
         recyclerView.layoutManager = layoutManager

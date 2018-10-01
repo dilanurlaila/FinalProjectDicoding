@@ -1,12 +1,9 @@
 package id.co.metrasat.footballApp
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -16,10 +13,10 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.TableLayout
 import com.google.gson.Gson
 import id.co.metrasat.footballApp.adapter.FavoritePageAdapter
 import id.co.metrasat.footballApp.adapter.PageAdapter
+import id.co.metrasat.footballApp.fragment.FragmentMatch.FragmentMatch
 import id.co.metrasat.footballApp.fragment.FragmentTeams
 import id.co.metrasat.footballApp.helper.ApiRepository
 import id.co.metrasat.footballApp.helper.LeagueView
@@ -29,43 +26,41 @@ import id.co.metrasat.footballApp.presenter.LeaguePresenter
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.content_home.*
+import kotlinx.android.synthetic.main.fragment_match.*
+import org.jetbrains.anko.support.v4.ctx
 
-class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, LeagueView{
+class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, LeagueView {
 
     private lateinit var pageAdapter: PageAdapter
-    private lateinit var presenter : LeaguePresenter
-    private lateinit var favoriteAdapter:FavoritePageAdapter
-    private lateinit var spinner : Spinner
+    private lateinit var presenter: LeaguePresenter
+    private lateinit var favoriteAdapter: FavoritePageAdapter
+    private lateinit var spinner: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(toolbars)
 
         val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+                this, drawer_layout, toolbars, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
-
+//        tabLayoutMainActivity.addTab(tabLayoutMainActivity.newTab())
+//        tabLayoutMainActivity.addTab(tabLayoutMainActivity.newTab())
+//        pageAdapter = PageAdapter(supportFragmentManager, tabLayoutMainActivity.tabCount, MainView.LEAGUE_ID)
+//        viewPagerMain.adapter = pageAdapter
+//        viewPagerMain.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayoutMainActivity))
+        addFragment(FragmentMatch())
         val gson = Gson()
         val apiRepository = ApiRepository()
         presenter = LeaguePresenter(this, apiRepository, gson)
         presenter.listLeague()
-
         spinner = findViewById(R.id.spLeagueId)
+
 
         nav_view.setNavigationItemSelectedListener(this)
     }
-
-    @SuppressLint("PrivateResource")
-    private fun addFrgment(fragment: Fragment) {
-        supportFragmentManager
-                .beginTransaction().replace(R.id.viewContainer, fragment, fragment.javaClass.simpleName)
-                .setCustomAnimations(R.anim.design_bottom_sheet_slide_in, R.anim.design_bottom_sheet_slide_out)
-                .commit()
-    }
-
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -91,25 +86,20 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_nextEvent -> {
-                tabLayoutMainActivity.getTabAt(0)?.setText("Last Event")
-                tabLayoutMainActivity.getTabAt(1)?.setText("Next Event")
-                pageAdapter = PageAdapter(supportFragmentManager, tabLayoutMainActivity.tabCount, MainView.LEAGUE_ID)
-                viewContainer.adapter = pageAdapter
-                viewContainer.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayoutMainActivity))
-                supportActionBar?.title = "Match"
-                onBackPressed()
+                addFragment(FragmentMatch())
             }
             R.id.nav_favorite -> {
-                tabLayoutMainActivity.getTabAt(0)?.setText("Event")
-                tabLayoutMainActivity.getTabAt(1)?.setText("Team")
-                favoriteAdapter = FavoritePageAdapter(supportFragmentManager, tabLayoutMainActivity.tabCount)
-                viewContainer.adapter = favoriteAdapter
-                viewContainer.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayoutMainActivity))
-                supportActionBar?.title = "Favorite"
-                onBackPressed()
+//                tabLayoutMainActivity.getTabAt(0)?.setText("Event")
+//                tabLayoutMainActivity.getTabAt(1)?.setText("Team")
+//                favoriteAdapter = FavoritePageAdapter(supportFragmentManager, tabLayoutMainActivity.tabCount)
+//                viewPagerMain.adapter = favoriteAdapter
+//                viewPagerMain.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayoutMainActivity))
+//                supportActionBar?.title = "Favorite"
+//                onBackPressed()
             }
             R.id.nav_teams -> {
-                supportActionBar?.title = "Teams"
+                val fragment = FragmentTeams.newInstance()
+                addFragment(fragment)
                 onBackPressed()
                 return true
 
@@ -120,36 +110,42 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    override fun showLoading() {
-    }
-
-    override fun hideLoading() {
+    private fun addFragment(fragment: Fragment) {
+        supportFragmentManager
+                .beginTransaction()
+                .setCustomAnimations(R.anim.design_bottom_sheet_slide_in, R.anim.design_bottom_sheet_slide_out)
+                .replace(R.id.viewMain, fragment, fragment.javaClass.simpleName)
+                .addToBackStack(fragment.javaClass.simpleName)
+                .commit()
     }
 
     override fun showLeagueList(data: List<LeaguesItem>) {
-        val arraySpinner : MutableList<String> = mutableListOf()
-        for (index in data.indices){
-            if (index == 22){
+        val arraySpinner: MutableList<String> = mutableListOf()
+        for (index in data.indices) {
+            if (index == 22) {
                 break
             }
             data[index].strLeague.let { arraySpinner.add(index, it) }
         }
-        val arrayAdapter: ArrayAdapter<String> = ArrayAdapter(this, R.layout.spinner_custom, arraySpinner)
+        val arrayAdapter = ArrayAdapter(this, R.layout.spinner_custom, arraySpinner)
         spinner.setPopupBackgroundResource(R.color.backgroundSoft)
         spinner.adapter = arrayAdapter
 
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
+
             }
+
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-               MainView.LEAGUE_ID = data[spinner.selectedItemPosition].idLeague
+                MainView.LEAGUE_ID = data[spinner.selectedItemPosition].idLeague
                 pageAdapter = PageAdapter(supportFragmentManager, tabLayoutMainActivity.tabCount, MainView.LEAGUE_ID)
-                viewContainer.adapter = pageAdapter
-                viewContainer.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayoutMainActivity))
+                ViewPagerMain.adapter = pageAdapter
+                ViewPagerMain.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayoutMainActivity))
 
             }
         }
-    }
 
+    }
 }
+
 

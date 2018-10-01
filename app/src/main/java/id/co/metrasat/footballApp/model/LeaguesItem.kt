@@ -3,15 +3,15 @@ package id.co.metrasat.footballApp.model
 import com.google.gson.annotations.SerializedName
 
 class LeaguesItem (@SerializedName("strLeagueAlternate")
-    var strLeagueAlternate: String = "",
+    val strLeagueAlternate: String = "",
 
     @SerializedName("strLeague")
-    var strLeague: String = "",
+    val strLeague: String = "",
 
     @SerializedName("strSport")
-    var strSport: String = "",
+    val strSport: String = "",
 
     @SerializedName("idLeague")
-    var idLeague: String = ""
+    val idLeague: String = ""
 
 )

@@ -12,13 +12,11 @@ class LeaguePresenter (private val view: LeagueView,
                        private val apiRepository: ApiRepository,
                        private val gson: Gson) {
     fun listLeague () {
-        view.showLoading()
         doAsync {
             val data = gson.fromJson(apiRepository.doRequest(TheSportDBApi.getListLeague()),
                     LeagueResponse::class.java
             )
             uiThread {
-                view.hideLoading()
                 view.showLeagueList(data.leagues)
             }
         }

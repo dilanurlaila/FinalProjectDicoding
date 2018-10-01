@@ -10,7 +10,7 @@ interface MainView {
     fun showEventList(data:List<EventsItem>)
 
     companion object {
-        var LEAGUE_ID = ""
+      var LEAGUE_ID = ""
 
     }
 }

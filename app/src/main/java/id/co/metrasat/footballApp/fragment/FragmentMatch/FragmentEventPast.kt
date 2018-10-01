@@ -54,16 +54,10 @@ class FragmentEventPast : Fragment(), MainView {
         presenter.getPastEvent(MainView.LEAGUE_ID)
 
         swipeRefresh.onRefresh {
-            presenter.getEventNext(MainView.LEAGUE_ID)
+            presenter.getPastEvent(MainView.LEAGUE_ID)
         }
 
         return rootView
-    }
-
-    companion object {
-        fun newInstance(): FragmentEventPast {
-            return newInstance()
-        }
     }
 
     override fun showLoading() {

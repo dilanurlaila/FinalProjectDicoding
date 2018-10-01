@@ -14,7 +14,10 @@
             android:name=".DetailClub"
             android:parentActivityName=".Main2Activity"
             android:theme="@style/AppTheme.main" />
-        <activity android:name=".Main2Activity"/>
+        <activity android:name=".Main2Activity">
+
+
+        </activity>
         <activity android:name=".SplashScreen" />
         <activity
             android:name=".HomeActivity"
@@ -25,6 +28,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
     </application>
 

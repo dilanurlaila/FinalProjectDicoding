@@ -18,6 +18,7 @@ import id.co.metrasat.footballApp.helper.invisible
 import id.co.metrasat.footballApp.helper.visible
 import id.co.metrasat.footballApp.model.EventsItem
 import id.co.metrasat.footballApp.presenter.MainPresenter
+import org.jetbrains.anko.support.v4.onRefresh
 
 
 class FragmentEventNext : Fragment(), MainView {
@@ -49,6 +50,10 @@ class FragmentEventNext : Fragment(), MainView {
         val gson = Gson()
         presenter = MainPresenter(this, apiRepository, gson)
         presenter.getEventNext(MainView.LEAGUE_ID)
+
+        swipeRefresh.onRefresh {
+            presenter.getEventNext(MainView.LEAGUE_ID)
+        }
 
 
         return rootView
