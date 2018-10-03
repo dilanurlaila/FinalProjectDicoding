@@ -4,7 +4,7 @@ import com.google.gson.Gson
 import id.co.metrasat.footballApp.helper.ApiRepository
 import id.co.metrasat.footballApp.helper.LeagueView
 import id.co.metrasat.footballApp.helper.TheSportDBApi
-import id.co.metrasat.footballApp.model.LeagueResponse
+import id.co.metrasat.footballApp.model.league.LeagueResponse
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 

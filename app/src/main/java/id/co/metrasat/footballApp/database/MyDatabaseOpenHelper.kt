@@ -2,13 +2,12 @@ package id.co.metrasat.footballApp.database
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import id.co.metrasat.footballApp.model.EventFavorite
-import id.co.metrasat.footballApp.model.TeamFavorite
+import id.co.metrasat.footballApp.model.event.EventFavorite
+import id.co.metrasat.footballApp.model.team.TeamFavorite
 import org.jetbrains.anko.db.*
 
 class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx,
-        "FavoriteMatch.db", null, 3) {
-
+        "FavoriteMatch.db", null, 4) {
 
     companion object {
         private var instance: MyDatabaseOpenHelper? = null
@@ -37,8 +36,10 @@ class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx,
         db.createTable(TeamFavorite.TABLE_NAME, true,
                 TeamFavorite.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT + UNIQUE,
                 TeamFavorite.TEAM_ID to TEXT,
+                TeamFavorite.TEAM_BADGE to TEXT,
                 TeamFavorite.TEAM_NAME to TEXT,
-                TeamFavorite.TEAM_BADGE to TEXT
+                TeamFavorite.TEAM_YEAR to TEXT
+
                 )
     }
 

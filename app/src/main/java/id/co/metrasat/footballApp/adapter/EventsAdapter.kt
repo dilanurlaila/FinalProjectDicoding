@@ -8,9 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import id.co.metrasat.footballApp.DetailClub
+import id.co.metrasat.footballApp.activity.DetailMatch
 import id.co.metrasat.footballApp.R
-import id.co.metrasat.footballApp.model.EventsItem
+import id.co.metrasat.footballApp.model.event.EventsItem
 import org.jetbrains.anko.startActivity
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,12 +28,12 @@ class EventsAdapter(private val context: Context?, private val events: List<Even
     override fun onBindViewHolder(holder: EventHolder, position: Int) {
         holder.bindItem(events [position])
         holder.itemView.setOnClickListener {
-            context?.startActivity<DetailClub>(
-                    DetailClub.ID_EVENTS to events[position].idEvent,
-                    DetailClub.ID_HOME to events[position].idHomeTeam,
-                    DetailClub.HOME_NAME to events[position].strHomeTeam,
-                    DetailClub.ID_AWAY to events[position].idAwayTeam,
-                    DetailClub.AWAY_NAME to events[position].strAwayTeam)
+            context?.startActivity<DetailMatch>(
+                    DetailMatch.ID_EVENTS to events[position].idEvent,
+                    DetailMatch.ID_HOME to events[position].idHomeTeam,
+                    DetailMatch.HOME_NAME to events[position].strHomeTeam,
+                    DetailMatch.ID_AWAY to events[position].idAwayTeam,
+                    DetailMatch.AWAY_NAME to events[position].strAwayTeam)
         }
 
     }

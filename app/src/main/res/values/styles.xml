@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/backgroundSoft</item>
         <item name="colorPrimaryDark">@color/background</item>
-        <item name="colorAccent">@android:color/white</item>
+        <item name="colorAccent">@color/dark_green</item>
     </style>
 
     <style name="DefaultToolbar">

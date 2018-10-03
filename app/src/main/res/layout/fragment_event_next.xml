@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragment.FragmentMatch.FragmentEventNext">
+    tools:context=".fragment.fragmentEvent.FragmentEventNext">
 
     <ProgressBar
         android:id="@+id/pgBarNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:indeterminateDrawable="@drawable/progress_bar"
         android:visibility="invisible" />
 
     <android.support.v4.widget.SwipeRefreshLayout

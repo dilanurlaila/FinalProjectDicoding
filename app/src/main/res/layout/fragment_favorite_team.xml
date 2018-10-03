@@ -4,18 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragment.FavoriteFragment.FavoriteTeam">
+    tools:context=".fragment.fragmentFavorite.FavoriteTeam">
 
         <ProgressBar
-            android:id="@+id/pgBarTeam"
+            android:id="@+id/pgBarTeamFavorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:visibility="invisible" />
 
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeFavoriteTeam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvTeam"
+            android:id="@+id/rvTeamFavorite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
+        </android.support.v4.widget.SwipeRefreshLayout>
 </RelativeLayout>

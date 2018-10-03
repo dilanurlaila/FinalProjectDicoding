@@ -1,6 +1,6 @@
 package id.co.metrasat.footballApp.helper
 
-import id.co.metrasat.footballApp.model.EventsItem
+import id.co.metrasat.footballApp.model.event.EventsItem
 
 interface MainView {
     fun showLoading()
@@ -10,7 +10,7 @@ interface MainView {
     fun showEventList(data:List<EventsItem>)
 
     companion object {
-      var LEAGUE_ID = ""
+     var LEAGUE_ID = ""
 
     }
 }

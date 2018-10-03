@@ -17,6 +17,11 @@ object TheSportDBApi {
         return  "${BuildConfig.BASE_URL}api/v1/json/${BuildConfig.TSDB_API_KEY}/all_leagues.php"
     }
 
+// https://www.thesportsdb.com/api/v1/json/1/lookup_all_players.php?id=133604
+    fun getAllPlayer(idTeam :String?):String{
+    return "${BuildConfig.BASE_URL}api/v1/json/${BuildConfig.TSDB_API_KEY}/lookup_all_players.php?id=" + idTeam
+}
+
     fun getLookupTeam(idTeam: String?): String {
         return "${BuildConfig.BASE_URL}api/v1/json/${BuildConfig.TSDB_API_KEY}/lookupteam.php?id=" + idTeam
     }

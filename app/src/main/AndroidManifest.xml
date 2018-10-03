@@ -10,27 +10,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.SplashScreen" />
         <activity
-            android:name=".DetailClub"
-            android:parentActivityName=".Main2Activity"
-            android:theme="@style/AppTheme.main" />
-        <activity android:name=".Main2Activity">
-
-
-        </activity>
-        <activity android:name=".SplashScreen" />
+            android:name=".activity.DetailMatch"
+            android:parentActivityName=".activity.HomeActivity"
+            android:theme="@style/AppTheme.main"/>
         <activity
-            android:name=".HomeActivity"
-            android:label="@string/title_activity_home"
+            android:name=".activity.HomeActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
+        <activity android:name=".activity.DetailTeam"
+            android:parentActivityName=".activity.HomeActivity"/>
     </application>
 
 </manifest>

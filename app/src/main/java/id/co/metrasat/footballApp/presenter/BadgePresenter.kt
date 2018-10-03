@@ -5,7 +5,7 @@ import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import id.co.metrasat.footballApp.helper.ApiRepository
 import id.co.metrasat.footballApp.helper.TheSportDBApi
-import id.co.metrasat.footballApp.model.TeamResponse
+import id.co.metrasat.footballApp.model.team.TeamResponse
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.coroutines.experimental.bg

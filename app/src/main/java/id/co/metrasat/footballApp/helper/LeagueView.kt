@@ -1,12 +1,10 @@
 package id.co.metrasat.footballApp.helper
 
-import android.widget.ArrayAdapter
-import id.co.metrasat.footballApp.fragment.FragmentMatch.FragmentMatch
-import id.co.metrasat.footballApp.model.LeaguesItem
+import id.co.metrasat.footballApp.model.league.LeaguesItem
 
 interface LeagueView {
-
-
+    fun hideLoading()
+    fun showLoading ()
     fun showLeagueList(data:List<LeaguesItem>)
 
 

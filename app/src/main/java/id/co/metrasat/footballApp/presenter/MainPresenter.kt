@@ -4,12 +4,10 @@ import com.google.gson.Gson
 import id.co.metrasat.footballApp.helper.ApiRepository
 import id.co.metrasat.footballApp.helper.MainView
 import id.co.metrasat.footballApp.helper.TheSportDBApi
-import id.co.metrasat.footballApp.model.EventsResponse
+import id.co.metrasat.footballApp.model.event.EventsResponse
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.coroutines.experimental.bg
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
 import kotlin.coroutines.experimental.CoroutineContext
 
 

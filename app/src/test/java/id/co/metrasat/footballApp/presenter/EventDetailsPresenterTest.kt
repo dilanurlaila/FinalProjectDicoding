@@ -4,8 +4,8 @@ import com.google.gson.Gson
 import id.co.metrasat.footballApp.helper.ApiRepository
 import id.co.metrasat.footballApp.helper.MainView
 import id.co.metrasat.footballApp.helper.TheSportDBApi
-import id.co.metrasat.footballApp.model.EventsItem
-import id.co.metrasat.footballApp.model.EventsResponse
+import id.co.metrasat.footballApp.model.event.EventsItem
+import id.co.metrasat.footballApp.model.event.EventsResponse
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
