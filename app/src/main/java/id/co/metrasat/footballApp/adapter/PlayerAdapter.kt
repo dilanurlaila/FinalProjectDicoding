@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.squareup.picasso.Picasso
 import id.co.metrasat.footballApp.R.id.*
+import id.co.metrasat.footballApp.activity.DetailPlayer
 import org.jetbrains.anko.*
 import id.co.metrasat.footballApp.model.player.PlayerItem
 
@@ -22,6 +23,17 @@ class PlayerAdapter (private val context: Context?, private val player: MutableL
 
     override fun onBindViewHolder(holder: PlayerHolder, position: Int) {
         holder.bindItem (player[position])
+        holder.itemView.setOnClickListener {
+            context?.startActivity<DetailPlayer>(
+                    DetailPlayer.ID_PLAYER to player[position].idPlayer,
+                    DetailPlayer.NAME to player[position].strPlayer,
+                    DetailPlayer.THUMB to player[position].strThumb,
+                    DetailPlayer.DESCRIPTION to player[position].strDescriptionEN,
+                    DetailPlayer.HEIGHT to player[position].strHeight,
+                    DetailPlayer.WEIGHT to player[position].strWeight,
+                    DetailPlayer.POSITION to player[position].strPosition
+            )
+        }
 
     }
     override fun getItemCount(): Int = player.size
@@ -44,16 +56,16 @@ class PlayerAdapter (private val context: Context?, private val player: MutableL
                     textView {
                         id = txt_NameClub
                         textSize = 16f
-                    }.lparams { margin = (dip(16))
+                    }.lparams {
+                        margin = (dip(16))
                     }
 
-                    textView{
+                    textView {
                         id = txt_Formasi
                         textSize = 16f
-                    }.lparams{ gravity = right}
+                    }
                 }
             }
-
         }
     }
 
@@ -70,7 +82,4 @@ class PlayerAdapter (private val context: Context?, private val player: MutableL
         }
 
     }
-
-
-
 }

@@ -17,6 +17,14 @@
         app:tabIndicatorColor="@color/backgroundSoft"
         app:tabSelectedTextColor="@color/background"/>
 
+    <ImageView
+        android:id="@+id/img_searchEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:padding="20dp"
+        app:srcCompat="@drawable/ic_search_black_24dp" />
+
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPagerMatch"
         android:layout_width="match_parent"

@@ -60,7 +60,7 @@
                     android:layout_below="@+id/txt_clubName"
                     android:gravity="center"
                     android:textColor="@android:color/white"
-                    android:text="1889" />
+                    tools:text="1889" />
 
             </RelativeLayout>
         </android.support.design.widget.CollapsingToolbarLayout>

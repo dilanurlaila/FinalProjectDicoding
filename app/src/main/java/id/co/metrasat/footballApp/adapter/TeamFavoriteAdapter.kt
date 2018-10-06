@@ -56,10 +56,8 @@ class TeamFavoriteAdapter(private val context: Context?, private val TeamsFavori
                     }.lparams { margin = dip(16) }
                 }
             }
-
         }
     }
-
 }
 
 class TeamFavoriteHolder(view: View) : RecyclerView.ViewHolder(view) {

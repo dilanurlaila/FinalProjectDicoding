@@ -86,7 +86,6 @@ class DetailTeam : AppCompatActivity(), TeamView {
         BadgeFetcher().loadLogo(idTeam, img_club)
 
         favoriteState()
-
     }
 
     override fun showLoading() {
@@ -101,7 +100,6 @@ class DetailTeam : AppCompatActivity(), TeamView {
         swipeRefresh.isRefreshing
         teams = data[0]
         txt_formedYear.text = teams.intFormedYear
-
 
     }
 

@@ -31,7 +31,6 @@ import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.design.snackbar
 
-
 class DetailMatch : AppCompatActivity(), MainView {
 
     var idEvent: String = ""

@@ -6,9 +6,11 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.*
+import android.widget.ImageView
 import android.widget.ProgressBar
 import com.google.gson.Gson
 import id.co.metrasat.footballApp.R
+import id.co.metrasat.footballApp.activity.SearchTeams
 import id.co.metrasat.footballApp.helper.ApiRepository
 import id.co.metrasat.footballApp.adapter.TeamAdapter
 import id.co.metrasat.footballApp.helper.TeamView
@@ -19,6 +21,7 @@ import id.co.metrasat.footballApp.model.team.TeamsItem
 import id.co.metrasat.footballApp.presenter.TeamPresenter
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.onRefresh
+import org.jetbrains.anko.support.v4.startActivity
 
 
 class FragmentTeams : Fragment() , TeamView{
@@ -29,6 +32,8 @@ class FragmentTeams : Fragment() , TeamView{
     private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefresh: SwipeRefreshLayout
     private lateinit var recyclerView: RecyclerView
+    private lateinit var imgView : ImageView
+
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +44,7 @@ class FragmentTeams : Fragment() , TeamView{
         progressBar = rootView.findViewById(R.id.pgBarTeam)
         swipeRefresh = rootView.findViewById(R.id.swipeTeams)
         recyclerView = rootView.findViewById(R.id.rvTeam)
+        imgView = rootView.findViewById(R.id.img_searchTeam)
 
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 1)
         recyclerView.layoutManager = layoutManager
@@ -54,9 +60,16 @@ class FragmentTeams : Fragment() , TeamView{
             presenter.getTeamList(MainView.LEAGUE_ID)
         }
 
+        setOnclick()
         return rootView
 
     }
+    private fun setOnclick () {
+        imgView.setOnClickListener {
+            startActivity<SearchTeams>()
+        }
+    }
+
 
     companion object {
         @JvmStatic

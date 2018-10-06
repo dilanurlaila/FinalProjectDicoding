@@ -32,8 +32,7 @@
                 android:id="@+id/strHomeTeam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:paddingRight="10dp"
+                android:padding="10dp"
                 android:textSize="15sp"
                 tools:text="Man United" />
 
@@ -65,7 +64,7 @@
                     android:id="@+id/strAwayScore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingRight="5dp"
+                    android:padding="5dp"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     tools:text="2" />
@@ -76,8 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
+                android:padding="10dp"
                 android:textSize="15sp"
                 tools:text="Tottenham" />
 

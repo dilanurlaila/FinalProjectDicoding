@@ -27,8 +27,9 @@ class FragmentPlayer : Fragment(), PlayerView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val rooView = inflater.inflate(R.layout.fragment_player, container, false)
-        listPlayer = rooView.findViewById(R.id.rv_player)
+        val rootView = inflater.inflate(R.layout.fragment_player, container, false)
+        listPlayer = rootView.findViewById(R.id.rv_player)
+
 
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 1)
         listPlayer.layoutManager = layoutManager
@@ -40,7 +41,7 @@ class FragmentPlayer : Fragment(), PlayerView {
         presenter = PlayerPresenter(this, apiRepository, gson)
         presenter.getListPlayer(DetailTeam.teamId)
 
-        return rooView
+        return rootView
     }
 
     override fun showPlayerList(data: List<PlayerItem>) {

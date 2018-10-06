@@ -1,5 +1,6 @@
 package id.co.metrasat.footballApp.model.event
 
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 
@@ -30,6 +31,10 @@ data class EventsItem(
 
         @SerializedName("strHomeTeam")
         val strHomeTeam: String?=null,
+
+        @SerializedName("strSport")
+        @Expose
+        var strSport: String? = null,
 
         @SerializedName("strHomeLineupDefense")
         val strHomeLineupDefense: String?=null,

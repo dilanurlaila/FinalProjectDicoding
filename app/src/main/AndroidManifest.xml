@@ -10,11 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.SplashScreen" />
         <activity
             android:name=".activity.DetailMatch"
             android:parentActivityName=".activity.HomeActivity"
-            android:theme="@style/AppTheme.main"/>
+            android:theme="@style/AppTheme.main" />
         <activity
             android:name=".activity.HomeActivity"
             android:theme="@style/AppTheme">
@@ -24,8 +23,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.DetailTeam"
-            android:parentActivityName=".activity.HomeActivity"/>
+        <activity
+            android:name=".activity.DetailTeam"
+            android:parentActivityName=".activity.HomeActivity" />
+        <activity
+            android:name=".activity.DetailPlayer"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activity.SearchEvents" />
+        <activity android:name=".activity.SearchTeams" />
     </application>
 
 </manifest>
