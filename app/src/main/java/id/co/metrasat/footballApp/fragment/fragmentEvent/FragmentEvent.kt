@@ -1,5 +1,6 @@
 package id.co.metrasat.footballApp.fragment.fragmentEvent
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
@@ -28,16 +29,19 @@ class FragmentEvent : Fragment() {
         viewContainer = rootView.findViewById(R.id.viewPagerMatch)
         imgView = rootView.findViewById(R.id.img_searchEvent)
 
-        tabLayout.addTab(tabLayout.newTab().setText("Last Event"))
-        tabLayout.addTab(tabLayout.newTab().setText("Next Event"))
-        eventPageAdapter = EventPageAdapter(fragmentManager, tabLayout.tabCount)
-        viewContainer.adapter = eventPageAdapter
-        viewContainer.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
-
+        setupViewPager(viewContainer)
+        tabLayout.setupWithViewPager(viewContainer)
 
         setOnclick()
         return rootView
 
+    }
+
+    private fun setupViewPager(viewPager: ViewPager){
+        val adapter = EventPageAdapter(childFragmentManager)
+        adapter.addfrag(FragmentEventPast(), "Last")
+        adapter.addfrag(FragmentEventNext(), "Next")
+        viewPager.adapter = adapter
     }
 
    private fun setOnclick () {
