@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="team_badge" type="id">id</item>
-    <item name="team_name" type="id">id</item>
-    <item name="img_Club" type="id">id</item>
-    <item name="txt_NameClub" type="id">id</item>
-    <item name="txt_Formasi" type="id">id</item>
+    <item name="team_badge" type="id"/>
+    <item name="team_name" type="id"/>
+    <item name="img_Club" type="id"/>
+    <item name="txt_NameClub" type="id"/>
+    <item name="txt_Formasi" type="id"/>
 </resources>

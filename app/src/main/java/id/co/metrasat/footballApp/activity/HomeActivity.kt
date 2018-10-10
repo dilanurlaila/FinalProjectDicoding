@@ -71,7 +71,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 return true
             }
             R.id.nav_favorite -> {
-                addFragment(FragmentFavorite())
+                val fragment = FragmentFavorite.newInstance()
+                addFragment(fragment)
                 onBackPressed()
                 return true
 

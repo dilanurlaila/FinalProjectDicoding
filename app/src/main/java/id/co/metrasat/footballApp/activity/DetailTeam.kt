@@ -97,7 +97,7 @@ class DetailTeam : AppCompatActivity(), TeamView {
     }
 
     override fun showTeamList(data: List<TeamsItem>) {
-        swipeRefresh.isRefreshing
+        swipeRefresh.isRefreshing = false
         teams = data[0]
         txt_formedYear.text = teams.intFormedYear
 

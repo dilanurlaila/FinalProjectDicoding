@@ -33,7 +33,8 @@ class DetailPlayer : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_player)
-        supportActionBar?.title = null
+        setSupportActionBar(toolbarPlayer)
+        supportActionBar?.title="Detail Player"
 
         val intent = intent
 

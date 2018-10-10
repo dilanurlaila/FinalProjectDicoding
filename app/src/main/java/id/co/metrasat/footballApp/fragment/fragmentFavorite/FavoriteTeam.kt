@@ -44,6 +44,7 @@ class FavoriteTeam : Fragment() {
 
         swipeRefresh.onRefresh {
             favorites.clear()
+            showFavorite()
         }
 
         return rootView
@@ -51,13 +52,12 @@ class FavoriteTeam : Fragment() {
 
     private fun showFavorite() {
         try {
-
-        swipeRefresh.isRefreshing = false
-        context?.database?.use {
-            val result = select(TeamFavorite.TABLE_NAME)
-            val favorite = result.parseList(classParser<TeamFavorite>())
-            favorites.addAll(favorite)
-            mAdapter.notifyDataSetChanged()
+            context?.database?.use {
+                swipeRefresh.isRefreshing = false
+                val result = select(TeamFavorite.TABLE_NAME)
+                val favorite = result.parseList(classParser<TeamFavorite>())
+                favorites.addAll(favorite)
+                mAdapter.notifyDataSetChanged()
         }
         }catch (e : SQLException) {
             println("=============================" + e.message + e.errorCode)

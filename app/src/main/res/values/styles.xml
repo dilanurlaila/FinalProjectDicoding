@@ -8,12 +8,6 @@
         <item name="colorAccent">@color/dark_green</item>
     </style>
 
-    <style name="DefaultToolbar">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">?attr/actionBarSize</item>
-        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-    </style>
-
     <style name="AppTheme.main" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/backgroundSoft</item>
         <item name="colorPrimaryDark">@color/background</item>

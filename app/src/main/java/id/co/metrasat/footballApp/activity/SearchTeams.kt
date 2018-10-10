@@ -66,9 +66,9 @@ class SearchTeams : AppCompatActivity(), TeamView {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.search -> return true
-            else -> return super.onOptionsItemSelected(item)
+            else ->  super.onOptionsItemSelected(item)
         }
     }
 

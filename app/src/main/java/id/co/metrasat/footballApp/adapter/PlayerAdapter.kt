@@ -57,12 +57,14 @@ class PlayerAdapter (private val context: Context?, private val player: MutableL
                         id = txt_NameClub
                         textSize = 16f
                     }.lparams {
-                        margin = (dip(16))
+                        margin = dip(16)
                     }
 
                     textView {
                         id = txt_Formasi
                         textSize = 16f
+                    }.lparams{
+                        margin = dip (16)
                     }
                 }
             }

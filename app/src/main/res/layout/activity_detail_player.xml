@@ -12,13 +12,20 @@
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background"
-        android:visibility="visible">
+        android:background="@color/background">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarPlayer"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_collapseMode="pin"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="56dp"
             android:orientation="vertical">
 
             <ImageView

@@ -39,16 +39,18 @@ class FavoriteEvent : Fragment() {
         mAdapter = EventFavoriteAdapter(this.context, favorites as ArrayList<EventFavorite>)
         listEvent.adapter = mAdapter
         showFavorite()
+
         swipeRefresh.onRefresh {
             favorites.clear()
+            showFavorite()
         }
 
         return rootView
     }
 
     private fun showFavorite() {
-        swipeRefresh.isRefreshing = false
         context?.database?.use {
+            swipeRefresh.isRefreshing = false
             val result = select(EventFavorite.TABLE_NAME)
             val favorite = result.parseList(classParser<EventFavorite>())
             favorites.addAll(favorite)
